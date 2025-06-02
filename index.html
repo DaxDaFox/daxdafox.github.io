@@ -44,35 +44,67 @@
       line-height: 1.6;
     }
 
+    #upload-area {
+      margin: 2rem 0;
+    }
+
     .footer {
       margin-top: 4rem;
       font-size: 0.9rem;
       color: #888;
     }
   </style>
+  <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>Welcome to Dax's Blog</h1>
+    <h1>Welcome To the Canadian Towns Guide!</h1>
 
     <div class="post">
-      <h2>✨ First Post: Hello World!</h2>
+      <h2>This is meant to be a little guide to help people who are thinking about moving to Canada for any reason</h2>
       <p>Hey there! This is my first little post on this blog. I'm excited to share my thoughts, projects, and rambles here. Stay tuned for more~ 💜</p>
     </div>
-
-    <div class="post">
-      <h2>💻 Tech Things I Love</h2>
-      <p>I've been messing with my PC setup lately, and it's honestly been a blast. If you haven't tried customizing your build, I totally recommend it!</p>
-    </div>
-
-    <div class="post">
-      <h2>🌸 Soft Vibes & Chill Days</h2>
+    
+    <div class="container">
+      <h1>The guide</h1>
       <p>Sometimes you just need a day with lo-fi beats, warm drinks, and coding something silly for fun. Don’t forget to take care of yourself, cutie!</p>
     </div>
+
+    <!-- 📄 Upload area for DOCX files -->
+    <div id="upload-area">
+      <h2>📥 Upload a .docx File</h2>
+      <input type="file" id="upload" accept=".docx" />
+    </div>
+
+    <!-- 📦 Where the docx content will appear -->
+    <div id="docx-output" class="post"></div>
 
     <div class="footer">
       &copy; 2025 Dax's Blog. Made with 💖 and a lil CSS magic.
     </div>
   </div>
+
+  <script>
+    const uploadInput = document.getElementById("upload");
+    const outputDiv = document.getElementById("docx-output");
+
+    uploadInput.addEventListener("change", function () {
+      const file = uploadInput.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const arrayBuffer = event.target.result;
+        mammoth.convertToHtml({ arrayBuffer: arrayBuffer })
+          .then(result => {
+            outputDiv.innerHTML = "<h2>📃 Uploaded Document</h2>" + result.value;
+          })
+          .catch(err => {
+            outputDiv.innerHTML = "<p style='color:red;'>Error reading file: " + err.message + "</p>";
+          });
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  </script>
 </body>
 </html>
