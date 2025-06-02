@@ -44,8 +44,12 @@
       line-height: 1.6;
     }
 
-    #upload-area {
-      margin: 2rem 0;
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(106, 58, 165, 0.2);
     }
 
     .footer {
@@ -54,7 +58,6 @@
       color: #888;
     }
   </style>
-  <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -62,49 +65,20 @@
 
     <div class="post">
       <h2>This is meant to be a little guide to help people who are thinking about moving to Canada for any reason</h2>
-      <p>Hey there! This is my first little post on this blog. I'm excited to share my thoughts, projects, and rambles here. Stay tuned for more~ 💜</p>
-    </div>
-    
-    <div class="container">
-      <h1>The guide</h1>
-      <p>Sometimes you just need a day with lo-fi beats, warm drinks, and coding something silly for fun. Don’t forget to take care of yourself, cutie!</p>
+      <p></p>
     </div>
 
-    <!-- 📄 Upload area for DOCX files -->
-    <div id="upload-area">
-      <h2>📥 Upload a .docx File</h2>
-      <input type="file" id="upload" accept=".docx" />
+    <!-- Embed external .docx with iframe -->
+    <div class="post">
+      <h2>Embedded DOCX Document</h2>
+      <iframe src="path/to/your-file.docx">
+        <p>Your browser does not support iframes. You can <a href="https://daxdafox.github.io/https://daxdafox.github.io/docs/Canadian Towns Moving Guide.docx">download the document here</a>.</p>
+      </iframe>
     </div>
-
-    <!-- 📦 Where the docx content will appear -->
-    <div id="docx-output" class="post"></div>
 
     <div class="footer">
-      &copy; 2025 Dax's Blog. Made with 💖 and a lil CSS magic.
+      &copy; 2025 Dax's Blog.
     </div>
   </div>
-
-  <script>
-    const uploadInput = document.getElementById("upload");
-    const outputDiv = document.getElementById("docx-output");
-
-    uploadInput.addEventListener("change", function () {
-      const file = uploadInput.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function (event) {
-        const arrayBuffer = event.target.result;
-        mammoth.convertToHtml({ arrayBuffer: arrayBuffer })
-          .then(result => {
-            outputDiv.innerHTML = "<h2>📃 Uploaded Document</h2>" + result.value;
-          })
-          .catch(err => {
-            outputDiv.innerHTML = "<p style='color:red;'>Error reading file: " + err.message + "</p>";
-          });
-      };
-      reader.readAsArrayBuffer(file);
-    });
-  </script>
 </body>
 </html>
