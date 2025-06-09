@@ -1,16 +1,16 @@
-   function toggleLightMode() {
-      var element = document.body;
-      element.classList.toggle("light-mode");
-      
-      // Save the user's preference
-      if (element.classList.contains("light-mode")) {
-        localStorage.setItem("themeMode", "light");
-      } else {
-        localStorage.setItem("themeMode", "dark");
-      }
-    }
+// Store theme state in memory instead of localStorage
+let currentTheme = 'dark';
 
-    // Check for saved theme preference on page load (defaults to dark)
-    if (localStorage.getItem("themeMode") === "light") {
-      document.body.classList.add("light-mode");
-    }
+function toggleLightMode() {
+  const element = document.body;
+  element.classList.toggle("light-mode");
+
+  // Update our in-memory theme state
+  currentTheme = element.classList.contains("light-mode") ? 'light' : 'dark';
+
+  // Optional: Log current theme to console
+  console.log(`Theme is now: ${currentTheme}`);
+}
+
+// Initialize to dark mode by default
+// No action needed here since body starts without the 'light-mode' class
