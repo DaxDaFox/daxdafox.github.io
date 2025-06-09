@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dax's Blog</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  </head>
 <body>
   <!-- Light Mode Toggle Button -->
   <button class="dark-mode-toggle" onclick="toggleLightMode()">Toggle light mode</button>
@@ -36,24 +35,5 @@
       &copy; 2025 Dax's Blog.
     </div>
   </div>
-
-  <script>
-    function toggleLightMode() {
-      var element = document.body;
-      element.classList.toggle("light-mode");
-      
-      // Save the user's preference
-      if (element.classList.contains("light-mode")) {
-        localStorage.setItem("themeMode", "light");
-      } else {
-        localStorage.setItem("themeMode", "dark");
-      }
-    }
-
-    // Check for saved theme preference on page load (defaults to dark)
-    if (localStorage.getItem("themeMode") === "light") {
-      document.body.classList.add("light-mode");
-    }
-  </script>
-</body>
+  </body>
 </html>
