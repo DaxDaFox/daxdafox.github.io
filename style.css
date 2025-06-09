@@ -2,8 +2,103 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.post {
+  background-color: #2d2d2d;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  color: #c19ef0;
+}
+
+.post h2 {
+  color: #9b7bc7;
+}
+
+.download-button {
+  background-color: #8a5cc4;
+}
+
+.download-button:hover {
+  background-color: #6c47b6;
+}
+
+.footer {
+  color: #aaa;
+}
+
+.dark-mode-toggle {
+  background-color: #444;
+  color: #e0e0e0;
+}
+
+.dark-mode-toggle:hover {
+  background-color: #555;
+}
+
+/* Light mode styles */
+body.light-mode {
   background-color: #f9f7fd;
   color: #333;
+}
+
+body.light-mode .post {
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode h1 {
+  color: #a46ee4;
+}
+
+body.light-mode .post h2 {
+  color: #6c47b6;
+}
+
+body.light-mode .download-button {
+  background-color: #a46ee4;
+}
+
+body.light-mode .download-button:hover {
+  background-color: #6c47b6;
+}
+
+body.light-mode .footer {
+  color: #888;
+}
+
+body.light-mode .dark-mode-toggle {
+  background-color: #a46ee4;
+  color: white;
+}
+
+body.light-mode .dark-mode-toggle:hover {
+  background-color: #6c47b6;
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .container {
@@ -65,21 +160,19 @@ body {
 h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #a46ee4;
   /* Apply bounce animation to title */
   animation: bounceIn 0.8s ease-out;
 }
 
 .post {
-  background-color: white;
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   text-align: center;
   /* Apply slide-up bounce to posts with delays */
   animation: slideUpBounce 0.6s ease-out;
   animation-fill-mode: both;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Stagger the animation delays for each post */
@@ -96,12 +189,10 @@ h1 {
 }
 
 .post h2 {
-  color: #6c47b6;
   margin-top: 0;
 }
 
 .download-button {
-  background-color: #a46ee4;
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -117,16 +208,24 @@ h1 {
 }
 
 .download-button:hover {
-  background-color: #6c47b6;
   transform: translateY(-2px);
 }
 
 .footer {
   margin-top: 4rem;
   font-size: 0.9rem;
-  color: #888;
   /* Footer bounces in last */
   animation: bounceIn 0.6s ease-out;
   animation-delay: 0.8s;
   animation-fill-mode: both;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .dark-mode-toggle {
+    top: 15px;
+    right: 15px;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
 }
