@@ -14,7 +14,6 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Dark mode styles */
     body.dark-mode {
       background-color: #1a1a1a;
       color: #e0e0e0;
@@ -54,7 +53,6 @@
       background-color: #555;
     }
 
-    /* Dark mode toggle button */
     .dark-mode-toggle {
       position: fixed;
       top: 20px;
@@ -84,60 +82,29 @@
       text-align: center;
     }
 
-    /* Bounce-in animation keyframes */
     @keyframes bounceIn {
-      0% {
-        transform: scale(0.3);
-        opacity: 0;
-      }
-      50% {
-        transform: scale(1.05);
-        opacity: 0.8;
-      }
-      70% {
-        transform: scale(0.9);
-        opacity: 0.9;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      70% { transform: scale(0.9); opacity: 0.9; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
-    /* Slide-up bounce animation for posts */
     @keyframes slideUpBounce {
-      0% {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-      60% {
-        transform: translateY(-5px);
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      0% { transform: translateY(30px); opacity: 0; }
+      60% { transform: translateY(-5px); opacity: 0.8; }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
-    /* Pulsing/breathing animation for buttons */
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-      100% {
-        transform: scale(1);
-      }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
     h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
       color: #a46ee4;
-      /* Apply bounce animation to title */
       animation: bounceIn 0.8s ease-out;
     }
 
@@ -148,24 +115,14 @@
       margin-bottom: 2rem;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       text-align: center;
-      /* Apply slide-up bounce to posts with delays */
       animation: slideUpBounce 0.6s ease-out;
       animation-fill-mode: both;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* Stagger the animation delays for each post */
-    .post:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .post:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-
-    .post:nth-child(4) {
-      animation-delay: 0.6s;
-    }
+    .post:nth-child(2) { animation-delay: 0.2s; }
+    .post:nth-child(3) { animation-delay: 0.4s; }
+    .post:nth-child(4) { animation-delay: 0.6s; }
 
     .post h2 {
       color: #6c47b6;
@@ -184,7 +141,6 @@
       margin-top: 1rem;
       text-decoration: none;
       display: inline-block;
-      /* Add pulsing animation */
       animation: pulse 2s ease-in-out infinite;
     }
 
@@ -197,13 +153,11 @@
       margin-top: 4rem;
       font-size: 0.9rem;
       color: #888;
-      /* Footer bounces in last */
       animation: bounceIn 0.6s ease-out;
       animation-delay: 0.8s;
       animation-fill-mode: both;
     }
 
-    /* Responsive design for mobile */
     @media (max-width: 768px) {
       .dark-mode-toggle {
         top: 15px;
@@ -211,6 +165,12 @@
         padding: 10px 16px;
         font-size: 13px;
       }
+    }
+
+    .download-button:focus,
+    .dark-mode-toggle:focus {
+      outline: 2px solid #a46ee4;
+      outline-offset: 3px;
     }
   </style>
 </head>
@@ -222,7 +182,6 @@
     <h1>Welcome To the Canadian Towns Guide!</h1>
     <div class="post">
       <h2>This is meant to be a little guide to help people who are thinking about moving to Canada for any reason</h2>
-      <p></p>
     </div>
     <div class="post">
       <h2>Download the Guide</h2>
@@ -243,25 +202,21 @@
     <div class="footer">
       &copy; 2025 Dax's Blog.
     </div>
-  </div>
 
   <script>
     function toggleDarkMode() {
-      var element = document.body;
-      element.classList.toggle("dark-mode");
-      
-      // Save the user's preference
-      if (element.classList.contains("dark-mode")) {
-        localStorage.setItem("darkMode", "enabled");
-      } else {
-        localStorage.setItem("darkMode", "disabled");
-      }
+      const element = document.body;
+      const isDark = element.classList.toggle("dark-mode");
+      localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
     }
 
-    // Check for saved dark mode preference on page load
-    if (localStorage.getItem("darkMode") === "enabled") {
-      document.body.classList.add("dark-mode");
-    }
+    (function () {
+      const saved = localStorage.getItem("darkMode");
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === "enabled" || (!saved && prefersDark)) {
+        document.body.classList.add("dark-mode");
+      }
+    })();
   </script>
 </body>
 </html>
