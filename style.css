@@ -1,208 +1,241 @@
-/* Default styles (Dark Mode) */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #1a1a1a;
-  color: #e0e0e0;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-.container {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+    .post {
+      background-color: #2d2d2d;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
 
-/* Bounce-in animation keyframes */
-@keyframes bounceIn {
-  0% {
-    transform: scale(0.3);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
-  70% {
-    transform: scale(0.9);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
+    h1 {
+      color: #c19ef0;
+    }
 
-/* Slide-up bounce animation for posts */
-@keyframes slideUpBounce {
-  0% {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  60% {
-    transform: translateY(-5px);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
+    .post h2 {
+      color: #9b7bc7;
+    }
 
-/* Pulsing/breathing animation for buttons */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
+    .download-button {
+      background-color: #8a5cc4;
+    }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #c19ef0;
-  /* Apply bounce animation to title */
-  animation: bounceIn 0.8s ease-out;
-}
+    .download-button:hover {
+      background-color: #6c47b6;
+    }
 
-.post {
-  background-color: #2d2d2d;
-  border-radius: 16px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  /* Apply slide-up bounce to posts with delays */
-  animation: slideUpBounce 0.6s ease-out;
-  animation-fill-mode: both;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
+    .footer {
+      color: #aaa;
+    }
 
-/* Stagger the animation delays for each post */
-.post:nth-child(2) {
-  animation-delay: 0.2s;
-}
+    .dark-mode-toggle {
+      background-color: #444;
+      color: #e0e0e0;
+    }
 
-.post:nth-child(3) {
-  animation-delay: 0.4s;
-}
+    .dark-mode-toggle:hover {
+      background-color: #555;
+    }
 
-.post:nth-child(4) {
-  animation-delay: 0.6s;
-}
+    /* Light mode styles */
+    body.light-mode {
+      background-color: #f9f7fd;
+      color: #333;
+    }
 
-.post h2 {
-  color: #9b7bc7;
-  margin-top: 0;
-}
+    body.light-mode .post {
+      background-color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
 
-.download-button {
-  background-color: #8a5cc4;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-top: 1rem;
-  text-decoration: none;
-  display: inline-block;
-  /* Add pulsing animation */
-  animation: pulse 2s ease-in-out infinite;
-}
+    body.light-mode h1 {
+      color: #a46ee4;
+    }
 
-.download-button:hover {
-  background-color: #6c47b6;
-  transform: translateY(-2px);
-}
+    body.light-mode .post h2 {
+      color: #6c47b6;
+    }
 
-.footer {
-  margin-top: 4rem;
-  font-size: 0.9rem;
-  color: #aaa;
-  /* Footer bounces in last */
-  animation: bounceIn 0.6s ease-out;
-  animation-delay: 0.8s;
-  animation-fill-mode: both;
-}
+    body.light-mode .download-button {
+      background-color: #a46ee4;
+    }
 
-/* Dark mode toggle button */
-.dark-mode-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #444;
-  color: #e0e0e0;
-  border: none;
-  padding: 12px 20px;
-  font-size: 14px;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+    body.light-mode .download-button:hover {
+      background-color: #6c47b6;
+    }
 
-.dark-mode-toggle:hover {
-  background-color: #555;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
+    body.light-mode .footer {
+      color: #888;
+    }
 
-/* Light mode styles */
-body.light-mode {
-  background-color: #f9f7fd;
-  color: #333;
-}
+    body.light-mode .dark-mode-toggle {
+      background-color: #a46ee4;
+      color: white;
+    }
 
-body.light-mode .post {
-  background-color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
+    body.light-mode .dark-mode-toggle:hover {
+      background-color: #6c47b6;
+    }
 
-body.light-mode h1 {
-  color: #a46ee4;
-}
+    /* Dark mode toggle button */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #a46ee4;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 14px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
 
-body.light-mode .post h2 {
-  color: #6c47b6;
-}
+    .dark-mode-toggle:hover {
+      background-color: #6c47b6;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
 
-body.light-mode .download-button {
-  background-color: #a46ee4;
-}
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+    }
 
-body.light-mode .download-button:hover {
-  background-color: #6c47b6;
-}
+    /* Bounce-in animation keyframes */
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.3);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+      }
+      70% {
+        transform: scale(0.9);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
 
-body.light-mode .footer {
-  color: #888;
-}
+    /* Slide-up bounce animation for posts */
+    @keyframes slideUpBounce {
+      0% {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      60% {
+        transform: translateY(-5px);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
-body.light-mode .dark-mode-toggle {
-  background-color: #a46ee4;
-  color: white;
-}
+    /* Pulsing/breathing animation for buttons */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
 
-body.light-mode .dark-mode-toggle:hover {
-  background-color: #6c47b6;
-}
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #c19ef0;
+      /* Apply bounce animation to title */
+      animation: bounceIn 0.8s ease-out;
+    }
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .dark-mode-toggle {
-    top: 15px;
-    right: 15px;
-    padding: 10px 16px;
-    font-size: 13px;
-  }
-}
+    .post {
+      background-color: #2d2d2d;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      /* Apply slide-up bounce to posts with delays */
+      animation: slideUpBounce 0.6s ease-out;
+      animation-fill-mode: both;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Stagger the animation delays for each post */
+    .post:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .post:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .post:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+
+    .post h2 {
+      color: #9b7bc7;
+      margin-top: 0;
+    }
+
+    .download-button {
+      background-color: #8a5cc4;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      /* Add pulsing animation */
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .download-button:hover {
+      background-color: #6c47b6;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      /* Footer bounces in last */
+      animation: bounceIn 0.6s ease-out;
+      animation-delay: 0.8s;
+      animation-fill-mode: both;
+    }
+
+    /* Responsive design for mobile */
+    @media (max-width: 768px) {
+      .dark-mode-toggle {
+        top: 15px;
+        right: 15px;
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+    }
