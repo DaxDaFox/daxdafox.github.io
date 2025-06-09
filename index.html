@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Light Mode Toggle Button -->
+  <button class="dark-mode-toggle" onclick="toggleLightMode()">Toggle light mode</button>
+
   <div class="container">
     <h1>Welcome To the Canadian Towns Guide!</h1>
     <div class="post">
@@ -33,5 +36,24 @@
       &copy; 2025 Dax's Blog.
     </div>
   </div>
+
+  <script>
+    function toggleLightMode() {
+      var element = document.body;
+      element.classList.toggle("light-mode");
+      
+      // Save the user's preference
+      if (element.classList.contains("light-mode")) {
+        localStorage.setItem("themeMode", "light");
+      } else {
+        localStorage.setItem("themeMode", "dark");
+      }
+    }
+
+    // Check for saved theme preference on page load (defaults to dark)
+    if (localStorage.getItem("themeMode") === "light") {
+      document.body.classList.add("light-mode");
+    }
+  </script>
 </body>
 </html>
